@@ -9,6 +9,7 @@ public class ModeloBowling {
     public Integer pontuacao;
     public String consultarPOntos;
     public Integer pontosGeral;
+    public String consultarScore;
 
     public Integer getPontuacao() {
         return pontuacao;
@@ -33,6 +34,9 @@ public class ModeloBowling {
     public void setPontosGeral(Integer pontosGeral) {
         this.pontosGeral = pontosGeral;
     }
+
+    
+    
     
     
 
