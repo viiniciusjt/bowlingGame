@@ -9,6 +9,9 @@ import java.util.Scanner;
 public class BowlingGame {
 
     Integer calcularPontuacao = 0;
+    double porcentagem ;
+    ModeloBowling b = new ModeloBowling();
+    
 
     /**
      * @param args the command line arguments
@@ -50,9 +53,24 @@ public class BowlingGame {
 
     }
 
-    public Integer calcularPontos(Integer pontuacao) {
-        calcularPontuacao = calcularPontuacao + pontuacao;
+     public Integer calcularPontos(Integer pontuacao ) {
+         
+         calcularPontuacao = calcularPontuacao + pontuacao;
+        b.setPontosGeral(calcularPontuacao); ;
         return calcularPontuacao;
     }
+
+    public Double calcularPorcentagemdaPontuacao(ModeloBowling b) {
+        double porcentagem = 0;
+        if (b.getPontosGeral() >= 50) {
+            porcentagem = (b.getPontosGeral() * 0.25);
+        } else if (b.getPontosGeral() >= 150);
+        porcentagem = (b.getPontosGeral() * 0.10);
+        return porcentagem;
+        
+        
+    }
+     
+     
 
 }
