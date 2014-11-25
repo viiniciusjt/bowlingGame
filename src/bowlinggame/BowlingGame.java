@@ -9,9 +9,8 @@ import java.util.Scanner;
 public class BowlingGame {
 
     Integer calcularPontuacao = 0;
-    double porcentagem ;
+    double porcentagem;
     ModeloBowling b = new ModeloBowling();
-    
 
     /**
      * @param args the command line arguments
@@ -28,24 +27,31 @@ public class BowlingGame {
                 System.out.println("Informe a Pontuação da Jogada: " + jogada + " da rodada " + rodada);
                 b.pontuacao = in.nextInt();
 
+                
                 while (b.pontuacao > 10) {
                     System.out.println("Jogada Inválida");
                     System.out.println("Informe a Pontuação da Jogada: " + jogada + " da rodada " + rodada);
                     b.pontuacao = in.nextInt();
                 }
                 
-                bg.calcularPontos(b.pontuacao);
+                if ((jogada == 1) && (b.pontuacao == 10)) {
+                    System.out.println("Strike!");
+                    bg.dobrarPontosStrike(b);
+                    jogada = jogada +1;
+                }
+
                 
+
+                bg.calcularPontos(b.pontuacao);
+
                 System.out.println("Deseja consultar o Score?");
                 b.consultarPOntos = in.next().toUpperCase();
-                
-                if (b.consultarPOntos.equals("S")){ // Mostra Pontuação Geral
+
+                if (b.consultarPOntos.equals("S")) { // Mostra Pontuação Geral
                     System.out.println("Pontuação Atual: " + bg.calcularPontuacao);
                 }
             }
         }
-        
-        
 
     }
 
@@ -53,10 +59,10 @@ public class BowlingGame {
 
     }
 
-     public Integer calcularPontos(Integer pontuacao ) {
-         
-         calcularPontuacao = calcularPontuacao + pontuacao;
-        b.setPontosGeral(calcularPontuacao); ;
+    public Integer calcularPontos(Integer pontuacao) {
+
+        calcularPontuacao = calcularPontuacao + pontuacao;
+        b.setPontosGeral(calcularPontuacao);;
         return calcularPontuacao;
     }
 
@@ -67,10 +73,12 @@ public class BowlingGame {
         } else if (b.getPontosGeral() >= 150);
         porcentagem = (b.getPontosGeral() * 0.10);
         return porcentagem;
-        
-        
+
     }
-     
-     
+
+    public Integer dobrarPontosStrike(ModeloBowling b) {
+        b.pontuacao = b.pontuacao + 10;
+        return b.pontuacao;
+    }
 
 }
